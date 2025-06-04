@@ -1,4 +1,4 @@
- <!-- Navbar -->
+<!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-hotel me-2"></i>LuxStay</a>
@@ -6,7 +6,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#home">Beranda</a>
                     </li>
@@ -15,12 +15,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#facilities">Fasilitas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Tentang Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Kontak</a>
                     </li>
                 </ul>
                 <?php $session = session(); ?>
@@ -31,6 +25,12 @@
                 <i class="fas fa-user-circle me-2"></i><?= htmlspecialchars($session->get('username')) ?>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li>
+                    <a href="<?= site_url('profile') ?>" class="dropdown-item">
+                        <i class="fas fa-user me-2"></i>Profile
+                    </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
                 <li>
                     <a href="<?= site_url('logout') ?>" class="dropdown-item">
                         <i class="fas fa-sign-out-alt me-2"></i>Logout

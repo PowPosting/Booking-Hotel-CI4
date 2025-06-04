@@ -3,7 +3,6 @@
         <div class="container">
             <h2 class="section-title">Tipe Kamar</h2>
             <p class="text-muted mb-5">Pilih kamar yang sesuai dengan kebutuhan Anda</p>
-            
             <div class="row g-4">
                 <!-- Standard Room -->
                 <div class="col-md-4">

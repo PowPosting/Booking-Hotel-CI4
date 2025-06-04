@@ -305,14 +305,6 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* Samakan ukuran gambar di modal detail kamar */
-        #roomDetailModal .modal-body img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
     </style>
 </head>
 <body>

@@ -4,9 +4,9 @@
     <?= $this->include('partials/hero') ?>
     
     <main>
-        <?= $this->include('partials/rooms') ?>
+        <?= $this->include('partials/rooms.php')?>
         <?= $this->include('partials/facilities') ?>
-        <?= $this->include('partials/testimonials') ?>
+        
     </main>
 
     <?= $this->include('partials/footer') ?>

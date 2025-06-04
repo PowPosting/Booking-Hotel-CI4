@@ -175,7 +175,7 @@
                                             <td><?= $user['fullname'] ?></td>
                                             <td><?= $user['username'] ?></td>
                                             <td><?= $user['email'] ?></td>
-                                            <td><?= $user['phone'] ?? '-' ?></td>
+                                            <td><?= $user['phone'] ?></td>
                                         </tr>
                                     <?php endforeach ?>
                                 <?php else: ?>

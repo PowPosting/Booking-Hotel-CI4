@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,24 +16,70 @@
         
         body {
             background-color: #f5f5f5;
-            background-image: url('<?= base_url('images/bglogin.jpg') ?>');
-            background-size: cover;         /* Membuat gambar menutupi seluruh area */
-            background-repeat: no-repeat;   /* Mencegah gambar diulang */
-            background-position: center;    /* Posisikan gambar di tengah */
+            background-image: url('<?= base_url('images/bglogin3.jpg') ?>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('<?= base_url('images/bglogin3.jpg') ?>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: blur(5px);
+            z-index: -1;
+        }
+        
+        /* Back Button Styles */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #4a6cfa;
+            border: 2px solid #4a6cfa;
+            border-radius: 50px;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        
+        .back-button i {
+            font-size: 16px;
         }
         
         .container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
         }
         
         .tabs {
@@ -139,9 +187,27 @@
         .switch-form a:hover {
             text-decoration: underline;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
     </style>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Back Button -->
+    <a href="<?= base_url('/') ?>" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Kembali ke Beranda
+    </a>
+
     <div class="container">
         <div class="tabs">
             <div class="tab active" id="tab-login">Login</div>
@@ -149,6 +215,7 @@
         </div>
         
         <div class="form-container">
+            <h2 style="text-align: center;">Welcome!</h2>
             <?php if (!empty($error)) : ?>
                 <div style="color: #fff; background: #e74c3c; padding: 10px 15px; border-radius: 5px; margin-bottom: 15px;">
                     <?= htmlspecialchars($error) ?>
@@ -159,6 +226,7 @@
                     <?= htmlspecialchars($success) ?>
                 </div>
             <?php endif; ?>
+            
             <!-- Login Form -->
             <form class="form active" id="login-form" method="post" action="<?= site_url('login') ?>">
                 <div class="form-group">
@@ -197,6 +265,16 @@
                     <div class="password-container">
                         <input type="password" id="register-password" name="password" placeholder="Create a password" required>
                         <span class="toggle-password" onclick="togglePassword('register-password', this)">👁️</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirm Password</label>
+                    <div class="password-container">
+                        <input type="password" id="register-confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                        <span class="toggle-password" onclick="togglePassword('register-confirm-password', this)">👁️</span>
+                    </div>
+                    <div id="password-match-error" style="color: #e74c3c; font-size: 12px; margin-top: 5px; display: none;">
+                        Passwords do not match!
                     </div>
                 </div>
                 <div class="form-group">
@@ -251,6 +329,39 @@
                 toggleBtn.textContent = '👁️';
             }
         }
+        
+        // Password confirmation validation
+        document.getElementById('register-confirm-password').addEventListener('input', function() {
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = this.value;
+            const errorDiv = document.getElementById('password-match-error');
+            
+            if (confirmPassword && password !== confirmPassword) {
+                errorDiv.style.display = 'block';
+                this.style.borderColor = '#e74c3c';
+            } else {
+                errorDiv.style.display = 'none';
+                this.style.borderColor = '#ddd';
+            }
+        });
+        
+        // Form validation before submit
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                return false;
+            }
+            
+            if (password.length < 6) {
+                e.preventDefault();
+                alert('Password must be at least 6 characters long!');
+                return false;
+            }
+        });
     </script>
 </body>
 </html>
