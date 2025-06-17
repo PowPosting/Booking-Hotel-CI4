@@ -86,7 +86,7 @@ Sistem manajemen hotel modern yang dibangun menggunakan CodeIgniter 4, menyediak
 
 3. **Database Setup**
    ```sql
-   CREATE DATABASE hotel_booking;
+   CREATE DATABASE hotel;
    ```
    Import file SQL yang disediakan atau setup table manual.
 
@@ -97,7 +97,7 @@ Sistem manajemen hotel modern yang dibangun menggunakan CodeIgniter 4, menyediak
    Edit `.env` file:
    ```
    database.default.hostname = localhost
-   database.default.database = hotel_booking
+   database.default.database = hotel
    database.default.username = your_username
    database.default.password = your_password
    ```
@@ -227,10 +227,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact & Support
 
-- **Developer**: Hotel Booking Team
-- **Email**: support@hotelbooking.com
-- **GitHub**: [Repository Link]
-- **Documentation**: [Wiki Link]
+- **Developer**: Mukhamad Diva Mahardika Awaludin
+- **Email**: mukhamaddiva10@gmail.com
+- **Instagram** mukhamaddiva
 
 ---
 
