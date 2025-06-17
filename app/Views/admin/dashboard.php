@@ -51,13 +51,14 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Fullname</th>
-                                    <th>Username</th>
-                                    <th>Tipe Kamar</th>
+                                    <th>Guest Name</th>
+                                    <th>Booking Code</th>
+                                    <th>Room</th>
                                     <th>Check In</th>
                                     <th>Check Out</th>
                                     <th>Total</th>
                                     <th>Status</th>
+                                    <th>Aksi</th> 
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,28 +66,81 @@
                                 <?php foreach ($bookings as $b): ?>
                                 <tr>
                                     <td><?= $b['id'] ?></td>
-                                    <td><?= $b['fullname'] ?? '-' ?></td>
-                                    <td><?= $b['username'] ?? '-' ?></td>
-                                    <td><?= $b['room_type'] ?></td>
-                                    <td><?= $b['check_in'] ?></td>
-                                    <td><?= $b['check_out'] ?></td>
-                                    <td>Rp<?= number_format($b['total_price'], 0, ',', '.') ?></td>
+                                    <td><?= htmlspecialchars($b['guest_name'] ?? '-') ?></td>
+                                    <td><?= htmlspecialchars($b['booking_code'] ?? '-') ?></td>
+                                    <td>Room <?= $b['room_id'] ?></td>
+                                    <td><?= date('d/m/Y', strtotime($b['check_in'])) ?></td>
+                                    <td><?= date('d/m/Y', strtotime($b['check_out'])) ?></td>
+                                    <td>Rp <?= number_format($b['total_amount'], 0, ',', '.') ?></td>
                                     <td>
-                                        <?php if ($b['status'] == 'pending'): ?>
-                                            <span class="badge bg-warning text-dark">Pending</span>
-                                        <?php elseif ($b['status'] == 'confirmed'): ?>
-                                            <span class="badge bg-success">Confirmed</span>
-                                        <?php elseif ($b['status'] == 'cancelled'): ?>
-                                            <span class="badge bg-danger">Cancelled</span>
-                                        <?php else: ?>
-                                            <span class="badge bg-secondary"><?= ucfirst($b['status']) ?></span>
-                                        <?php endif; ?>
+                                        <?php 
+                                        $status = $b['booking_status'] ?? 'pending';
+                                        $badgeClass = $status == 'confirmed' ? 'success' : ($status == 'cancelled' ? 'danger' : 'warning');
+                                        ?>
+                                        <span class="badge bg-<?= $badgeClass ?>">
+                                            <?= ucfirst($status) ?>
+                                        </span>
+                                        <br><small class="text-muted">
+                                            Payment: <?= ucfirst($b['payment_status'] ?? 'pending') ?>
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <!-- Dropdown untuk ubah booking status -->
+                                        <div class="dropdown me-2 d-inline-block">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                                <i class="fas fa-edit"></i> Status
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updateBookingStatus(<?= $b['id'] ?>, 'pending')">
+                                                        <i class="fas fa-clock text-warning"></i> Pending
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updateBookingStatus(<?= $b['id'] ?>, 'confirmed')">
+                                                        <i class="fas fa-check text-success"></i> Confirmed
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updateBookingStatus(<?= $b['id'] ?>, 'cancelled')">
+                                                        <i class="fas fa-times text-danger"></i> Cancelled
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <!-- Dropdown untuk ubah payment status -->
+                                        <div class="dropdown d-inline-block">
+                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                                <i class="fas fa-money-bill"></i> Payment
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updatePaymentStatus(<?= $b['id'] ?>, 'pending')">
+                                                        <i class="fas fa-clock text-warning"></i> Pending
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updatePaymentStatus(<?= $b['id'] ?>, 'paid')">
+                                                        <i class="fas fa-check text-success"></i> Paid
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updatePaymentStatus(<?= $b['id'] ?>, 'refunded')">
+                                                        <i class="fas fa-undo text-info"></i> Refunded
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                                 <?php endforeach ?>
                                 <?php else: ?>
                                 <tr>
-                                    <td colspan="8" class="text-center text-muted">Belum ada data pemesanan.</td>
+                                    <td colspan="9" class="text-center text-muted">
+                                        <i class="fas fa-inbox fa-2x mb-2"></i><br>
+                                        Belum ada data pemesanan.
+                                    </td>
                                 </tr>
                                 <?php endif ?>
                             </tbody>
@@ -121,20 +175,52 @@
                                 <?php foreach ($rooms as $room): ?>
                                 <tr>
                                     <td><?= $room['id'] ?></td>
-                                    <td><?= $room['room_type'] ?></td>
-                                    <td><?= $room['room_number'] ?></td>
+                                    <td><?= htmlspecialchars($room['room_type'] ?? '-') ?></td>
+                                    <td><?= htmlspecialchars($room['room_number'] ?? 'Room ' . $room['id']) ?></td> <!-- FIX: room_number -->
                                     <td>
-                                        <?php if ($room['status'] == 'available'): ?>
-                                            <span class="badge bg-success">Tersedia</span>
-                                        <?php elseif ($room['status'] == 'occupied'): ?>
-                                            <span class="badge bg-danger">Terisi</span>
-                                        <?php else: ?>
-                                            <span class="badge bg-secondary"><?= ucfirst($room['status']) ?></span>
-                                        <?php endif; ?>
+                                        <?php 
+                                        $status = $room['status'] ?? 'available'; // Column 'status' ada di DB
+                                        
+                                        $badges = [
+                                            'available' => ['text' => 'Tersedia', 'class' => 'success'],
+                                            'occupied' => ['text' => 'Terisi', 'class' => 'danger'], 
+                                            'maintenance' => ['text' => 'Maintenance', 'class' => 'warning']
+                                        ];
+                                        
+                                        $badge = $badges[$status] ?? ['text' => ucfirst($status), 'class' => 'secondary'];
+                                        ?>
+                                        <span class="badge bg-<?= $badge['class'] ?>"><?= $badge['text'] ?></span>
                                     </td>
                                     <td>
-                                        <a href="<?= base_url('admin/room/edit/'.$room['id']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                        <a href="<?= base_url('admin/room/delete/'.$room['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus kamar?')"><i class="fas fa-trash"></i></a>
+                                        <!-- Dropdown untuk ubah status -->
+                                        <div class="dropdown me-2 d-inline-block">
+                                            <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                                <i class="fas fa-toggle-on"></i> Status
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updateRoomStatus(<?= $room['id'] ?>, 'available')">
+                                                        <i class="fas fa-check text-success"></i> Tersedia
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updateRoomStatus(<?= $room['id'] ?>, 'occupied')">
+                                                        <i class="fas fa-times text-danger"></i> Terisi
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" onclick="updateRoomStatus(<?= $room['id'] ?>, 'maintenance')">
+                                                        <i class="fas fa-wrench text-warning"></i> Maintenance
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <!-- Action buttons -->
+                                        <a href="<?= base_url('admin/rooms/delete/'.$room['id']) ?>" class="btn btn-danger btn-sm" 
+                                           onclick="return confirm('Yakin hapus kamar?')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php endforeach ?>
@@ -172,10 +258,10 @@
                                     <?php foreach ($users as $user): ?>
                                         <tr>
                                             <td><?= $user['id'] ?></td>
-                                            <td><?= $user['fullname'] ?></td>
-                                            <td><?= $user['username'] ?></td>
-                                            <td><?= $user['email'] ?></td>
-                                            <td><?= $user['phone'] ?></td>
+                                            <td><?= htmlspecialchars($user['name'] ?? $user['fullname'] ?? '-') ?></td>
+                                            <td><?= htmlspecialchars($user['username'] ?? '-') ?></td>
+                                            <td><?= htmlspecialchars($user['email'] ?? '-') ?></td>
+                                            <td><?= htmlspecialchars($user['phone'] ?? '-') ?></td>
                                         </tr>
                                     <?php endforeach ?>
                                 <?php else: ?>
@@ -192,5 +278,100 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+function updateRoomStatus(roomId, status) {
+    console.log('Updating room:', roomId, 'to status:', status);
+    
+    if (confirm('Yakin mengubah status kamar?')) {
+        fetch('<?= base_url('admin/rooms/update-status') ?>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({
+                room_id: parseInt(roomId),
+                status: status
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response:', data);
+            if (data.success) {
+                alert('Success: ' + data.message);
+                location.reload();
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan sistem');
+        });
+    }
+}
+
+function updateBookingStatus(bookingId, status) {
+    console.log('Updating booking:', bookingId, 'to status:', status);
+    
+    if (confirm('Yakin mengubah status pemesanan?')) {
+        fetch(`<?= base_url('admin/bookings/update-status/') ?>${bookingId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({
+                booking_status: status
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response:', data);
+            if (data.success) {
+                alert('Success: ' + data.message);
+                location.reload();
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan sistem');
+        });
+    }
+}
+
+function updatePaymentStatus(bookingId, status) {
+    console.log('Updating payment:', bookingId, 'to status:', status);
+    
+    if (confirm('Yakin mengubah status pembayaran?')) {
+        fetch(`<?= base_url('admin/bookings/update-payment/') ?>${bookingId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({
+                payment_status: status
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response:', data);
+            if (data.success) {
+                alert('Success: ' + data.message);
+                location.reload();
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan sistem');
+        });
+    }
+}
+</script>
 </body>
 </html>

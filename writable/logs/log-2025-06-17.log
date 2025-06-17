@@ -1,0 +1,311 @@
+DEBUG - 2025-06-17 17:38:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:38:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 17:39:37 --> Rooms data: [{"id":"61","room_number":"S101","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 02:13:21"},{"id":"62","room_number":"S102","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-10 04:34:30"},{"id":"63","room_number":"S103","room_type":"Kamar Standard","status":"maintenance","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 01:52:36"},{"id":"64","room_number":"S104","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-07 19:12:14"},{"id":"65","room_number":"S105","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 02:14:11"},{"id":"66","room_number":"S106","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 04:33:22"},{"id":"67","room_number":"S107","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"68","room_number":"S108","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"69","room_number":"S109","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"70","room_number":"S110","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"71","room_number":"D201","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"72","room_number":"D202","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"73","room_number":"D203","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"74","room_number":"D204","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"75","room_number":"D205","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"76","room_number":"D206","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"77","room_number":"D207","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"78","room_number":"D208","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"79","room_number":"D209","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"80","room_number":"D210","room_type":"Kamar Deluxe","status":"available","price":"1200000.00","description":"Kamar luas dengan pemandangan kota dan fasilitas lengkap.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"81","room_number":"SU301","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"82","room_number":"SU302","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"83","room_number":"SU303","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"84","room_number":"SU304","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"85","room_number":"SU305","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"86","room_number":"SU306","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"87","room_number":"SU307","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"88","room_number":"SU308","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"89","room_number":"SU309","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"90","room_number":"SU310","room_type":"Suite Room","status":"available","price":"2000000.00","description":"Kamar mewah dengan ruang tamu terpisah dan fasilitas premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"91","room_number":"F401","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"92","room_number":"F402","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"93","room_number":"F403","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"94","room_number":"F404","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"95","room_number":"F405","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"96","room_number":"F406","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"97","room_number":"F407","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"98","room_number":"F408","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"99","room_number":"F409","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"100","room_number":"F410","room_type":"Kamar Keluarga","status":"available","price":"1800000.00","description":"Kamar luas untuk keluarga dengan berbagai fasilitas untuk anak-anak.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"101","room_number":"E501","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"102","room_number":"E502","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"103","room_number":"E503","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"104","room_number":"E504","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"105","room_number":"E505","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"106","room_number":"E506","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"107","room_number":"E507","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"108","room_number":"E508","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"109","room_number":"E509","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"110","room_number":"E510","room_type":"Kamar Eksekutif","status":"available","price":"1500000.00","description":"Kamar eksklusif dengan akses lounge eksekutif dan layanan premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"111","room_number":"P1001","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"112","room_number":"P1002","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"113","room_number":"P1003","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"114","room_number":"P1004","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"115","room_number":"P1005","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"116","room_number":"P1006","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"117","room_number":"P1007","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"118","room_number":"P1008","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"},{"id":"119","room_number":"P1009","room_type":"Penthouse","status":"occupied","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 02:12:27"},{"id":"120","room_number":"P1010","room_type":"Penthouse","status":"available","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-05-28 11:22:37"}]
+DEBUG - 2025-06-17 17:39:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:39:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:40:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:45:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:46:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:49:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:49:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:50:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:50:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:50:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:50:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:53:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:54:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:55:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:56:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:56:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 17:56:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:01:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:01:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:01:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:01:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:01:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:03:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:07:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:09:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:09:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:09:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:09:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:09:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:10:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:10:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:10:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:10:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:10:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:10:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:12:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:12:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:12:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:12:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:12:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:13:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:13:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:17:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:17:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:17:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:19:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:20:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:21:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:21:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:21:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:21:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:21:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:21:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:22:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:29:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:30:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:33:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:34:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:35:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:35:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:35:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:35:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:35:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:36:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:36:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:36:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:36:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:36:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:36:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:42:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:42:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:42:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:42:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:42:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:43:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:44:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:44:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:44:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:44:34 --> Remove cart - received index: '0'
+DEBUG - 2025-06-17 18:44:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:44:34 --> Cart items count: 1
+DEBUG - 2025-06-17 18:44:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:44:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:44:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:45:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:46:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:47:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:47:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:50:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:51:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:51:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:51:44 --> Update room status request: {"room_id":61,"status":"available"}
+INFO - 2025-06-17 18:51:44 --> Room ID: 61, Status: available
+INFO - 2025-06-17 18:51:44 --> Existing room: {"id":"61","room_number":"S101","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 02:13:21"}
+INFO - 2025-06-17 18:51:44 --> Update data: {"status":"available"}
+INFO - 2025-06-17 18:51:44 --> Update result: success
+INFO - 2025-06-17 18:51:44 --> Room after update: {"id":"61","room_number":"S101","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 18:51:44"}
+DEBUG - 2025-06-17 18:51:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:51:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:51:50 --> Update room status request: {"room_id":62,"status":"available"}
+INFO - 2025-06-17 18:51:50 --> Room ID: 62, Status: available
+INFO - 2025-06-17 18:51:50 --> Existing room: {"id":"62","room_number":"S102","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-10 04:34:30"}
+INFO - 2025-06-17 18:51:50 --> Update data: {"status":"available"}
+INFO - 2025-06-17 18:51:50 --> Update result: success
+INFO - 2025-06-17 18:51:50 --> Room after update: {"id":"62","room_number":"S102","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 18:51:50"}
+DEBUG - 2025-06-17 18:51:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:51:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:51:59 --> Update room status request: {"room_id":64,"status":"available"}
+INFO - 2025-06-17 18:51:59 --> Room ID: 64, Status: available
+INFO - 2025-06-17 18:51:59 --> Existing room: {"id":"64","room_number":"S104","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-07 19:12:14"}
+INFO - 2025-06-17 18:51:59 --> Update data: {"status":"available"}
+INFO - 2025-06-17 18:51:59 --> Update result: success
+INFO - 2025-06-17 18:51:59 --> Room after update: {"id":"64","room_number":"S104","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 18:51:59"}
+DEBUG - 2025-06-17 18:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:52:10 --> Update room status request: {"room_id":65,"status":"available"}
+INFO - 2025-06-17 18:52:10 --> Room ID: 65, Status: available
+INFO - 2025-06-17 18:52:10 --> Existing room: {"id":"65","room_number":"S105","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 02:14:11"}
+INFO - 2025-06-17 18:52:10 --> Update data: {"status":"available"}
+INFO - 2025-06-17 18:52:10 --> Update result: success
+INFO - 2025-06-17 18:52:10 --> Room after update: {"id":"65","room_number":"S105","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 18:52:10"}
+DEBUG - 2025-06-17 18:52:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:52:18 --> Update room status request: {"room_id":66,"status":"available"}
+INFO - 2025-06-17 18:52:18 --> Room ID: 66, Status: available
+INFO - 2025-06-17 18:52:18 --> Existing room: {"id":"66","room_number":"S106","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 04:33:22"}
+INFO - 2025-06-17 18:52:18 --> Update data: {"status":"available"}
+INFO - 2025-06-17 18:52:18 --> Update result: success
+INFO - 2025-06-17 18:52:18 --> Room after update: {"id":"66","room_number":"S106","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 18:52:18"}
+DEBUG - 2025-06-17 18:52:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 18:52:31 --> Update room status request: {"room_id":119,"status":"maintenance"}
+INFO - 2025-06-17 18:52:31 --> Room ID: 119, Status: maintenance
+INFO - 2025-06-17 18:52:31 --> Existing room: {"id":"119","room_number":"P1009","room_type":"Penthouse","status":"occupied","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-11 02:12:27"}
+INFO - 2025-06-17 18:52:31 --> Update data: {"status":"maintenance"}
+INFO - 2025-06-17 18:52:31 --> Update result: success
+INFO - 2025-06-17 18:52:31 --> Room after update: {"id":"119","room_number":"P1009","room_type":"Penthouse","status":"maintenance","price":"3500000.00","description":"Hunian mewah di lantai teratas dengan pemandangan panorama dan fasilitas super premium.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 18:52:31"}
+DEBUG - 2025-06-17 18:52:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:52:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:53:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:53:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:53:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:55:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:56:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:58:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:59:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:59:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 18:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:08:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:08:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:08:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:09:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:09:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:09:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:09:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:09:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:10:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-17 19:11:24 --> Update room status request: {"room_id":61,"status":"occupied"}
+INFO - 2025-06-17 19:11:24 --> Room ID: 61, Status: occupied
+INFO - 2025-06-17 19:11:24 --> Existing room: {"id":"61","room_number":"S101","room_type":"Kamar Standard","status":"available","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 18:51:44"}
+INFO - 2025-06-17 19:11:24 --> Update data: {"status":"occupied"}
+INFO - 2025-06-17 19:11:24 --> Update result: success
+INFO - 2025-06-17 19:11:24 --> Room after update: {"id":"61","room_number":"S101","room_type":"Kamar Standard","status":"occupied","price":"800000.00","description":"Kamar nyaman dengan fasilitas dasar untuk penginapan yang menyenangkan.","created_at":"2025-05-28 11:22:37","updated_at":"2025-06-17 19:11:24"}
+DEBUG - 2025-06-17 19:11:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:11:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:12:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:16:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:19:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:37:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-17 19:37:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
