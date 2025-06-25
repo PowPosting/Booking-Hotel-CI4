@@ -154,9 +154,6 @@
             <div class="card shadow-sm mb-4">
                 <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
                     <h5 class="mb-0"><i class="fas fa-door-open me-2"></i>Data Kamar</h5>
-                    <a href="<?= base_url('admin/room/create') ?>" class="btn btn-light btn-sm">
-                        <i class="fas fa-plus"></i> Tambah Kamar
-                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

@@ -18,10 +18,6 @@ class Admin extends BaseController
         $this->roomModel = new \App\Models\RoomModel();
         $this->userModel = new \App\Models\UserModel();
         
-        // Check if user is admin
-        if (!session()->get('is_admin')) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Access denied');
-        }
     }
 
     public function dashboard()

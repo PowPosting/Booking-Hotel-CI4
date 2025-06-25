@@ -300,17 +300,17 @@
         <div class="form-container">
             <h2 class="form-title">Reset Password</h2>
             <p class="form-subtitle">
-                Please enter your new password below. Make sure it's strong and secure.
+                Harap masukkan kata sandi baru Anda di bawah ini. Pastikan kata sandi kuat dan aman.
             </p>
 
             <!-- Security Information -->
             <div class="security-info">
-                <h6><i class="fas fa-shield-alt me-2"></i>Password Requirements:</h6>
+                <h6><i class="fas fa-shield-alt me-2"></i>Persyaratan:</h6>
                 <ul>
-                    <li>At least 6 characters long</li>
-                    <li>Mix of uppercase and lowercase letters</li>
-                    <li>Include numbers and special characters</li>
-                    <li>Don't use personal information</li>
+                    <li>panjang karakter minimal 6</li>
+                    <li>Campuran huruf besar dan kecil</li>
+                    <li>Termasuk angka dan karakter khusus</li>
+                    <li>Jangan gunakan informasi pribadi</li>
                 </ul>
             </div>
 
@@ -331,13 +331,13 @@
                 <input type="hidden" name="user_id" value="<?= esc($user_id) ?>">
                 
                 <div class="form-group">
-                    <label for="password">New Password</label>
+                    <label for="password">Password Baru</label>
                     <div class="password-container">
-                        <input type="password" id="password" name="password" placeholder="Enter your new password" required>
+                        <input type="password" id="password" name="password" placeholder="Masukkan kata sandi baru Anda" required>
                         <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
                     </div>
                     <div class="password-strength">
-                        <span id="strength-text">Password strength: </span>
+                        <span id="strength-text">Kekuatan kata sandi: </span>
                         <div class="strength-bar">
                             <div class="strength-fill" id="strength-fill"></div>
                         </div>
@@ -345,25 +345,25 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="confirm-password">Confirm New Password</label>
+                    <label for="confirm-password">Konfirmasi Password Baru</label>
                     <div class="password-container">
-                        <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your new password" required>
+                        <input type="password" id="confirm-password" name="confirm_password" placeholder="Konfirmasi kata sandi baru Anda" required>
                         <span class="toggle-password" onclick="togglePassword('confirm-password', this)">👁️</span>
                     </div>
                     <div id="password-match-error" style="color: #e74c3c; font-size: 12px; margin-top: 5px; display: none;">
-                        <i class="fas fa-times-circle me-1"></i>Passwords do not match!
+                        <i class="fas fa-times-circle me-1"></i>Kata sandi tidak cocok!
                     </div>
                     <div id="password-match-success" style="color: #27ae60; font-size: 12px; margin-top: 5px; display: none;">
-                        <i class="fas fa-check-circle me-1"></i>Passwords match!
+                        <i class="fas fa-check-circle me-1"></i>Kata sandi cocok!
                     </div>
                 </div>
                 
                 <button type="submit" class="btn" id="submit-btn">
-                    <i class="fas fa-key me-2"></i>Update Password
+                    <i class="fas fa-key me-2"></i>Perbarui Password
                 </button>
                 
                 <div class="back-to-login">
-                    Remember your password? <a href="<?= base_url('/login') ?>">Back to Login</a>
+                    <a href="<?= base_url('/login') ?>">Kembali ke Login</a>
                 </div>
             </form>
         </div>
