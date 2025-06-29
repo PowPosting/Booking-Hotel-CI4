@@ -19,6 +19,9 @@ class Cart extends BaseController
      */
     public function add()
     {
+        // Debug: Log all received POST data
+        log_message('info', 'Cart add - POST data: ' . var_export($this->request->getPost(), true));
+        
         // Check if user is logged in
         if (!session()->get('logged_in')) {
             return $this->response->setJSON([
@@ -42,9 +45,35 @@ class Cart extends BaseController
         $guestEmail = $this->request->getPost('guest_email');
         $guestPhone = $this->request->getPost('guest_phone');
         $specialRequests = $this->request->getPost('special_requests');
+        
+        // Debug: Log critical fields
+        log_message('info', "Cart add - Critical fields: roomId=$roomId, roomName=$roomName, price=$price, checkIn=$checkIn, checkOut=$checkOut");
+        
+        // Extra facilities
+        $selectedFacilities = $this->request->getPost('selected_facilities');
+        $facilitiesData = [];
+        $facilitiesTotal = 0;
+        
+        // Process selected facilities
+        if ($selectedFacilities) {
+            $facilitiesArray = json_decode($selectedFacilities, true);
+            if (is_array($facilitiesArray)) {
+                foreach ($facilitiesArray as $facility) {
+                    if (isset($facility['name']) && isset($facility['price'])) {
+                        $facilitiesData[] = [
+                            'name' => $facility['name'],
+                            'price' => (int)$facility['price'],
+                            'display_name' => $this->getFacilityDisplayName($facility['name'])
+                        ];
+                        $facilitiesTotal += (int)$facility['price'];
+                    }
+                }
+            }
+        }
 
         // Basic validation
         if (!$roomId || !$roomName || !$price || !$checkIn || !$checkOut) {
+            log_message('error', 'Cart add - Missing required fields');
             return $this->response->setJSON([
                 'success' => false,
                 'message' => 'Data kamar tidak lengkap!'
@@ -52,6 +81,7 @@ class Cart extends BaseController
         }
         
         if (!$guestName || !$guestEmail || !$guestPhone) {
+            log_message('error', 'Cart add - Missing guest information');
             return $this->response->setJSON([
                 'success' => false,
                 'message' => 'Data tamu tidak lengkap!'
@@ -78,24 +108,43 @@ class Cart extends BaseController
             ]);
         }
 
+        // Debug room data
+        log_message('info', 'Room data type: ' . gettype($room));
+        log_message('info', 'Room data: ' . var_export($room, true));
+
+        // Convert to array if it's an object
+        if (is_object($room)) {
+            $room = (array) $room;
+        }
+
+        // Debug after conversion
+        log_message('info', 'Room data after conversion: ' . var_export($room, true));
+
         // Calculate nights and total price
         $checkInDate = new \DateTime($checkIn);
         $checkOutDate = new \DateTime($checkOut);
         $nights = $checkInDate->diff($checkOutDate)->days;
-        $totalPrice = $room['price'] * $nights;
+        
+        // Use safe array access
+        $roomPrice = isset($room['price']) ? $room['price'] : (isset($room['room_price']) ? $room['room_price'] : $price);
+        $roomTotal = $roomPrice * $nights;
+        $totalPrice = $roomTotal + $facilitiesTotal;
 
         // Add to cart
         $cartItem = [
             'id' => uniqid(), // **TAMBAH UNIQUE ID**
             'room_id' => $roomId,
-            'room_name' => $room['room_number'] ?? 'Room ' . $roomId,
-            'room_type' => $room['room_type'] ?? 'Standard',
-            'price' => $room['price'],
+            'room_name' => $room['room_number'] ?? ('Room ' . $roomId),
+            'room_type' => $room['room_type'] ?? $roomType ?? 'Standard',
+            'price' => $roomPrice,
             'image' => $image ?? 'default-room.jpg', // **Image dari POST**
             'check_in' => $checkIn,
             'check_out' => $checkOut,
             'nights' => $nights,
             'guests' => $guests,
+            'room_total' => $roomTotal,
+            'facilities' => $facilitiesData,
+            'facilities_total' => $facilitiesTotal,
             'total_price' => $totalPrice,
             'guest_name' => $guestName, // **TAMBAH GUEST INFO**
             'guest_email' => $guestEmail,
@@ -211,6 +260,23 @@ class Cart extends BaseController
             'formatted_subtotal' => 'Rp ' . number_format($subtotal, 0, ',', '.'),
             'formatted_total' => 'Rp ' . number_format($subtotal, 0, ',', '.')
         ]);
+    }
+
+    /**
+     * Get facility display name
+     */
+    private function getFacilityDisplayName($facilityKey)
+    {
+        $facilityNames = [
+            'breakfast' => 'Paket Sarapan',
+            'spa' => 'Spa Package',
+            'private_gym' => 'Private Gym',
+            'airport_transfer' => 'Airport Transfer',
+            'late_checkout' => 'Late Check-out',
+            'minibar' => 'Minibar Package'
+        ];
+
+        return $facilityNames[$facilityKey] ?? ucfirst(str_replace('_', ' ', $facilityKey));
     }
 
     /**

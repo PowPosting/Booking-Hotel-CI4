@@ -1,0 +1,64 @@
+# CodeIgniter 4 specific
+.env
+.env.*
+writable/logs/*
+writable/cache/*
+writable/session/*
+writable/debugbar/*
+writable/uploads/*
+!writable/logs/index.html
+!writable/cache/index.html
+!writable/session/index.html
+!writable/debugbar/index.html
+!writable/uploads/index.html
+
+# Composer
+vendor/
+composer.lock
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# Logs
+*.log
+
+# Development tools
+.phpunit.result.cache
+.php_cs.cache
+phpunit.xml
+
+# OS generated files
+.htaccess.backup
+error_log
+
+# Database files (optional, uncomment if needed)
+# *.sql
+# *.db
+# *.sqlite

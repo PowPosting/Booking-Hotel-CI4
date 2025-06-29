@@ -134,6 +134,7 @@ $notifications = session()->get('notifications') ?? [];
                         <a class="nav-link" href="#" id="notificationDropdown" data-bs-toggle="dropdown">
                             <i class="fas fa-bell"></i>
                             <?php 
+                            $notifications = session()->get('notifications') ?? [];
                             $unreadCount = count(array_filter($notifications, function($notif) { 
                                 return isset($notif['read']) ? !$notif['read'] : true; 
                             }));
@@ -145,39 +146,67 @@ $notifications = session()->get('notifications') ?? [];
                         <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="notificationDropdown" style="min-width: 320px;">
                             <div class="dropdown-header d-flex justify-content-between align-items-center">
                                 <h6 class="mb-0">Notifikasi</h6>
-                                <small class="text-muted">0 baru</small>
+                                <small class="text-muted"><?= $unreadCount ?> baru</small>
                             </div>
                             <div class="dropdown-divider"></div>
                             
-                            <!-- Notification Items Container (populated by JavaScript) -->
-                            <div id="notificationItems">
+                            <?php if (empty($notifications)): ?>
                                 <div class="text-center py-4">
-                                    <div class="spinner-border spinner-border-sm text-primary" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                    <p class="text-muted mt-2 mb-0">Memuat notifikasi...</p>
+                                    <i class="fas fa-bell-slash text-muted" style="font-size: 2rem;"></i>
+                                    <p class="text-muted mt-2 mb-0">Tidak ada notifikasi</p>
+                                    <small class="text-muted">Notifikasi akan muncul di sini</small>
                                 </div>
-                            </div>
-                            
-                            <!-- View All Link -->
-                            <div class="text-center p-2 border-top">
-                                <a href="<?= site_url('notifications') ?>" class="btn btn-sm btn-outline-primary">
-                                    <i class="fas fa-eye me-1"></i>Lihat Semua
+                            <?php else: ?>
+                                <?php foreach (array_slice($notifications, 0, 3) as $index => $notif): ?>
+                                <a href="#" class="dropdown-item px-3 py-2 border-bottom notification-item" 
+                                   onclick="showNotificationDetail(<?= $index ?>, event)">
+                                    <div class="d-flex align-items-start">
+                                        <div class="bg-<?= ($notif['type'] ?? 'info') === 'success' ? 'success' : (($notif['type'] ?? 'info') === 'info' ? 'info' : 'warning') ?> rounded-circle me-3 mt-1" style="width: 8px; height: 8px;"></div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fs-6"><?= htmlspecialchars($notif['title'] ?? 'Notification') ?></h6>
+                                            <p class="mb-1 small text-muted"><?= htmlspecialchars(substr($notif['message'] ?? '', 0, 60)) ?><?= strlen($notif['message'] ?? '') > 60 ? '...' : '' ?></p>
+                                            <small class="text-muted"><?= time_elapsed_string($notif['created_at'] ?? date('Y-m-d H:i:s')) ?></small>
+                                        </div>
+                                        <?php if (!($notif['read'] ?? false)): ?>
+                                        <div class="badge bg-primary rounded-pill" style="font-size: 6px; width: 8px; height: 8px;"></div>
+                                        <?php endif; ?>
+                                    </div>
                                 </a>
-                            </div>
+                                <?php endforeach; ?>
+                                
+                                <div class="p-3">
+                                    <div class="d-grid gap-2">
+                                        <div class="row g-2">
+                                            <div class="col-6">
+                                                <button class="btn btn-outline-secondary btn-sm w-100" onclick="markAllNotificationsAsRead()">
+                                                    <i class="fas fa-check-double me-1"></i>
+                                                    <small>Tandai Semua</small>
+                                                </button>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="<?= site_url('notifications') ?>" class="btn btn-outline-primary btn-sm w-100">
+                                                    <i class="fas fa-eye me-1"></i>
+                                                    <small>Lihat Semua</small>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
-                    <!-- User Profile Dropdown -->
+                    <!-- User Dropdown -->
                     <div class="dropdown">
                         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user me-2"></i><?= $session->get('username') ?>
+                            <i class="fas fa-user-circle me-2"></i><?= htmlspecialchars($session->get('username')) ?>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="<?= site_url('booking') ?>"><i class="fas fa-calendar me-2"></i>Booking Saya</a></li>
-                            <li><a class="dropdown-item" href="<?= site_url('notifications') ?>"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                            <li>
+                                <a href="<?= site_url('logout') ?>" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 <?php else: ?>
@@ -191,39 +220,78 @@ $notifications = session()->get('notifications') ?? [];
 <!-- Notification Detail Modal -->
 <div class="modal fade" id="notificationDetailModal" tabindex="-1" aria-labelledby="notificationDetailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content border-0 shadow-lg">
             <div class="modal-header border-0" id="notificationModalHeader">
-                <div class="notification-icon-container me-3" id="notificationIconContainer">
-                    <i id="notificationIcon" class="fas fa-info-circle fa-3x text-info"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h5 class="modal-title mb-0" id="notificationDetailModalLabel">Detail Notifikasi</h5>
-                    <small class="text-muted" id="notificationType">Informasi</small>
-                </div>
+                <h5 class="modal-title" id="notificationDetailModalLabel">
+                    <i class="fas fa-bell me-2"></i>Detail Notifikasi
+                </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="mb-3">
-                    <h6 class="fw-bold" id="notificationTitle">Judul Notifikasi</h6>
-                    <p class="text-muted mb-2" id="notificationMessage">Pesan notifikasi akan ditampilkan di sini...</p>
-                    <small class="text-muted">
-                        <i class="fas fa-clock me-1"></i>
-                        <span id="notificationTime">Waktu</span>
-                    </small>
+                <!-- Notification Icon & Type -->
+                <div class="text-center mb-4">
+                    <div class="notification-icon-container" id="notificationIconContainer">
+                        <i class="fas fa-info-circle fa-3x text-info" id="notificationIcon"></i>
+                    </div>
                 </div>
                 
-                <!-- Additional notification data -->
-                <div id="notificationAdditionalData" class="border-top pt-3" style="display: none;">
-                    <h6 class="fw-bold mb-2">Detail Tambahan:</h6>
-                    <div id="additionalDataContent">
-                        <!-- Dynamic content will be inserted here -->
+                <!-- Notification Title -->
+                <div class="text-center mb-3">
+                    <h4 class="fw-bold text-dark" id="notificationTitle">Judul Notifikasi</h4>
+                </div>
+                
+                <!-- Notification Message -->
+                <div class="card border-0 bg-light mb-3">
+                    <div class="card-body">
+                        <p class="mb-0 text-dark" id="notificationMessage">Isi pesan notifikasi akan ditampilkan di sini...</p>
+                    </div>
+                </div>
+                
+                <!-- Notification Details -->
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-clock text-muted me-2"></i>
+                            <div>
+                                <small class="text-muted d-block">Waktu</small>
+                                <span class="fw-bold" id="notificationTime">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-tag text-muted me-2"></i>
+                            <div>
+                                <small class="text-muted d-block">Tipe</small>
+                                <span class="fw-bold" id="notificationType">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Data (if any) -->
+                <div id="notificationAdditionalData" class="mt-3" style="display: none;">
+                    <div class="card border-primary border-opacity-25">
+                        <div class="card-header bg-primary bg-opacity-10">
+                            <h6 class="mb-0 text-primary">
+                                <i class="fas fa-info-circle me-2"></i>Informasi Tambahan
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="additionalDataContent"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary" id="markAsReadBtn" onclick="markNotificationRead()">
-                    <i class="fas fa-check me-1"></i>Tandai Dibaca
+            <div class="modal-footer border-0 justify-content-center">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>Tutup
+                </button>
+                <button type="button" class="btn btn-primary" id="markAsReadBtn" onclick="markNotificationAsRead()">
+                    <i class="fas fa-check me-2"></i>Tandai Sudah Dibaca
+                </button>
+                <button type="button" class="btn btn-danger" id="deleteNotificationBtn" onclick="deleteNotification()">
+                    <i class="fas fa-trash me-2"></i>Hapus
                 </button>
             </div>
         </div>
@@ -231,17 +299,103 @@ $notifications = session()->get('notifications') ?? [];
 </div>
 
 <style>
+/* Custom styling untuk dropdown notification dan cart */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.badge {
+    font-size: 0.7em;
+}
+
+/* Animation untuk badge */
+.badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        min-width: 280px !important;
+    }
+    
+    .d-flex.align-items-center > .dropdown {
+        margin-right: 0.5rem !important;
+    }
+}
+
+.notification-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-item:hover {
+    background-color: #f8f9fa;
+}
+
+.notification-icon {
+    width: 20px;
+    text-align: center;
+}
+
+.notification-content {
+    min-width: 0;
+}
+
+.notification-title {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.notification-message {
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+.notification-time {
+    font-size: 0.75rem;
+}
+
+.badge {
+    font-size: 0.7rem;
+}
+
 .notification-icon-container {
-    padding: 1rem;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: rgba(13, 110, 253, 0.1);
-    display: inline-flex;
+    background: rgba(108, 117, 125, 0.1);
+    display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
 }
 
 .notification-icon-container.success {
     background: rgba(25, 135, 84, 0.1);
+}
+
+.notification-icon-container.info {
+    background: rgba(13, 202, 240, 0.1);
 }
 
 .notification-icon-container.warning {
@@ -352,42 +506,16 @@ function proceedToCheckout() {
     }, 300);
 }
 
-// Update notifications function
+// Ganti function updateNotifications yang ada dengan ini:
 function updateNotifications() {
-    console.log('🔔 Fetching notifications from /booking/getNotifications...');
+    console.log('🔔 Fetching notifications...');
     
-    fetch('<?= site_url('booking/getNotifications') ?>')
-    .then(r => {
-        console.log('🔔 Response status:', r.status);
-        console.log('🔔 Response headers:', r.headers);
-        console.log('🔔 Response ok:', r.ok);
-        
-        if (!r.ok) {
-            throw new Error(`HTTP ${r.status}: ${r.statusText}`);
-        }
-        
-        return r.text().then(text => {
-            console.log('🔔 Raw response text:', text);
-            try {
-                return JSON.parse(text);
-            } catch (e) {
-                console.error('🔔 JSON Parse error:', e);
-                console.error('🔔 Response text that failed to parse:', text);
-                throw new Error('Invalid JSON response');
-            }
-        });
-    })
+    fetch('<?= site_url('notifications') ?>')
+    .then(r => r.json())
     .then(data => {
-        console.log('🔔 Raw notification data:', data);
-        console.log('🔔 Data type:', typeof data);
-        console.log('🔔 Data JSON:', JSON.stringify(data, null, 2));
+        console.log('🔔 Notification data:', data);
         
         if (data.success) {
-            console.log('🔔 Number of notifications:', data.notifications.length);
-            if (data.notifications.length > 0) {
-                console.log('🔔 First notification:', data.notifications[0]);
-            }
-            
             // Update global notifications data
             allNotifications = data.notifications;
             
@@ -409,38 +537,60 @@ function updateNotifications() {
                 unreadText.textContent = data.count + ' baru';
             }
             
-            // Update dropdown content
-            updateNotificationDropdown(data.notifications);
-            
             console.log('🔔 Notifications updated successfully');
-        } else {
-            console.error('🔔 API returned error:', data.message || 'Unknown error');
         }
     })
     .catch(error => {
         console.error('🔔 Error fetching notifications:', error);
-        console.error('🔔 Error details:', error.message, error.stack);
-        
-        // Show error in dropdown too
-        const dropdown = document.getElementById('notificationItems');
-        if (dropdown) {
-            dropdown.innerHTML = `
-                <div class="text-center py-4">
-                    <i class="fas fa-exclamation-triangle text-warning" style="font-size: 2rem;"></i>
-                    <p class="text-muted mt-2 mb-0">Error loading notifications</p>
-                    <small class="text-muted">${error.message}</small>
-                </div>
-            `;
+    });
+}
+                let html = `
+                    <div class="dropdown-header d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">Notifikasi</h6>
+                        <small class="text-muted">${data.count} baru</small>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                `;
+                
+                data.notifications.forEach(notif => {
+                    html += `
+                        <a href="#" class="dropdown-item px-3 py-2 border-bottom">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-success rounded-circle me-3 mt-1" style="width: 8px; height: 8px;"></div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1 fs-6">${notif.title}</h6>
+                                    <p class="mb-1 small text-muted">${notif.message}</p>
+                                    <small class="text-muted">${notif.time}</small>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                });
+                
+                dropdown.innerHTML = html;
+                console.log(' Dropdown updated');
+            }
         }
+    })
+    .catch(e => {
+        console.error(' Error fetching notifications:', e);
     });
 }
 
-// Load notification items in dropdown
-function loadNotificationItems() {
-    fetch('<?= site_url('booking/getNotifications') ?>')
+// Load saat page ready
+document.addEventListener('DOMContentLoaded', updateNotifications);
+
+// Global function
+window.updateNotifications = updateNotifications;
+
+function loadNotifications() {
+    if (!isLoggedIn) return;
+
+    fetch('<?= base_url('booking/notifications') ?>')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                updateNotificationBadge(data.count);
                 updateNotificationDropdown(data.notifications);
             }
         })
@@ -448,59 +598,41 @@ function loadNotificationItems() {
 }
 
 function updateNotificationDropdown(notifications) {
-    console.log('🔔 updateNotificationDropdown called with:', notifications);
-    console.log('🔔 notifications length:', notifications.length);
-    console.log('🔔 notifications type:', typeof notifications);
-    
     const dropdown = document.getElementById('notificationItems');
-    if (!dropdown) {
-        console.error('🔔 notificationItems element not found!');
-        return;
-    }
+    if (!dropdown) return;
 
     if (notifications.length === 0) {
-        console.log('🔔 No notifications, showing empty state');
-        dropdown.innerHTML = `
-            <div class="text-center py-4">
-                <i class="fas fa-bell text-muted" style="font-size: 2rem;"></i>
-                <p class="text-muted mt-2 mb-0">Tidak ada notifikasi</p>
-                <small class="text-muted">Notifikasi akan muncul di sini</small>
-            </div>
-        `;
+        dropdown.innerHTML = '<li><span class="dropdown-item-text text-muted">Tidak ada notifikasi</span></li>';
         return;
     }
 
-    console.log('🔔 Building dropdown HTML for', notifications.length, 'notifications');
-
-    // Show only first 3 notifications
-    const displayNotifications = notifications.slice(0, 3);
-    console.log('🔔 Display notifications:', displayNotifications);
-    
-    dropdown.innerHTML = displayNotifications.map((notif, index) => `
-        <a class="dropdown-item notification-item" href="${notif.url || '#'}" onclick="showNotificationDetail(${index}, event)">
-            <div class="d-flex align-items-start">
-                <div class="notification-icon me-3">
-                    <i class="fas fa-${notif.status_icon || 'info-circle'} text-${notif.status_color || 'info'}"></i>
-                </div>
-                <div class="notification-content flex-grow-1">
-                    <div class="notification-title fw-bold">${notif.title}</div>
-                    ${notif.status_text ? `<div class="notification-status">
-                        <span class="badge bg-${notif.status_color} mb-1">${notif.status_text}</span>
-                    </div>` : ''}
-                    <div class="notification-message text-muted small">${notif.message.length > 60 ? notif.message.substring(0, 60) + '...' : notif.message}</div>
-                    <div class="notification-time text-muted small mt-1">
-                        <i class="fas fa-clock me-1"></i>${notif.time}
+    dropdown.innerHTML = notifications.map(notif => `
+        <li>
+            <a class="dropdown-item notification-item" href="${notif.url}">
+                <div class="d-flex align-items-start">
+                    <div class="notification-icon me-3">
+                        <i class="${notif.status_icon} text-${notif.status_color}"></i>
+                    </div>
+                    <div class="notification-content flex-grow-1">
+                        <div class="notification-title fw-bold">${notif.title}</div>
+                        <div class="notification-status">
+                            <span class="badge bg-${notif.status_color} mb-1">${notif.status_text}</span>
+                        </div>
+                        <div class="notification-message text-muted small">${notif.message}</div>
+                        <div class="notification-time text-muted small mt-1">
+                            <i class="fas fa-clock me-1"></i>${notif.time}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-        ${index < displayNotifications.length - 1 ? '<div class="dropdown-divider"></div>' : ''}
+            </a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
     `).join('');
 }
 
 // Global variable to store current notification data
 let currentNotificationIndex = null;
-let allNotifications = [];
+let allNotifications = <?= json_encode(session()->get('notifications') ?? []) ?>;
 
 // Show notification detail modal
 function showNotificationDetail(index, event) {
@@ -662,41 +794,39 @@ function formatDataKey(key) {
 
 // Format data value for display
 function formatDataValue(value) {
-    if (typeof value === 'number' && value > 1000) {
+    if (typeof value === 'number' && value > 1000000) {
         return 'Rp ' + new Intl.NumberFormat('id-ID').format(value);
     }
     return value;
 }
 
 // Mark notification as read
-function markNotificationRead() {
+function markNotificationAsRead() {
     if (currentNotificationIndex === null) return;
-    
-    const formData = new FormData();
-    formData.append('index', currentNotificationIndex);
     
     fetch('<?= site_url('notifications/mark-read') ?>', {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+            index: currentNotificationIndex
+        })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             // Update local data
-            if (allNotifications[currentNotificationIndex]) {
-                allNotifications[currentNotificationIndex].read = true;
-            }
+            allNotifications[currentNotificationIndex].read = true;
             
-            // Close modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById('notificationDetailModal'));
-            if (modal) {
-                modal.hide();
-            }
+            // Hide button
+            document.getElementById('markAsReadBtn').style.display = 'none';
             
             // Update notification count
             updateNotifications();
             
-            showAlert('success', data.message || 'Notifikasi ditandai sebagai sudah dibaca');
+            showAlert('success', 'Notifikasi ditandai sebagai sudah dibaca');
         } else {
             showAlert('error', data.message || 'Gagal menandai notifikasi');
         }
@@ -707,17 +837,57 @@ function markNotificationRead() {
     });
 }
 
-// Mark all notifications as read
-function markAllNotificationsRead() {
-    fetch('<?= site_url('notifications/mark-all-read') ?>', {
-        method: 'POST'
+// Delete notification
+function deleteNotification() {
+    if (currentNotificationIndex === null) return;
+    
+    if (!confirm('Yakin ingin menghapus notifikasi ini?')) {
+        return;
+    }
+    
+    fetch('<?= site_url('notifications/delete') ?>', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+            index: currentNotificationIndex
+        })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Update all local notifications as read
-            allNotifications.forEach(notif => notif.read = true);
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('notificationDetailModal'));
+            modal.hide();
             
+            // Update notifications
+            updateNotifications();
+            
+            showAlert('success', 'Notifikasi berhasil dihapus');
+        } else {
+            showAlert('error', data.message || 'Gagal menghapus notifikasi');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showAlert('error', 'Terjadi kesalahan');
+    });
+}
+
+// Mark all notifications as read
+function markAllNotificationsAsRead() {
+    fetch('<?= site_url('notifications/mark-all-read') ?>', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
             // Update notification count
             updateNotifications();
             
@@ -741,15 +911,11 @@ function markAllNotificationsRead() {
 // Auto refresh notifications every 30 seconds
 setInterval(updateNotifications, 30000);
 
-// Load notifications on page load
-updateNotifications();
-
 // Make functions global so they can be called from HTML
 window.removeFromCart = removeFromCart;
 window.addToCart = addToCart;
 window.proceedToCheckout = proceedToCheckout;
 window.showNotificationDetail = showNotificationDetail;
-window.updateNotifications = updateNotifications;
 
 });
 </script>
@@ -757,4 +923,64 @@ window.updateNotifications = updateNotifications;
 <?php
 // Helper function untuk time elapsed sudah ada di helper file
 // Sample notifications sudah dihapus
+?>
+            'message' => 'Booking kamar Deluxe untuk tanggal 30 Juni 2025 telah berhasil dikonfirmasi. Silakan lakukan pembayaran dalam 24 jam.',
+            'type' => 'success',
+            'data' => [
+                'booking_id' => 'BK001',
+                'room_number' => 'D101',
+                'check_in' => '2025-06-30',
+                'check_out' => '2025-07-02',
+                'total_price' => 1200000
+            ],
+            'read' => false,
+            'created_at' => date('Y-m-d H:i:s', strtotime('-2 hours'))
+        ],
+        [
+            'id' => uniqid(),
+            'title' => 'Pembayaran Menunggu',
+            'message' => 'Pembayaran untuk booking BK002 belum diterima. Harap segera lakukan pembayaran untuk menghindari pembatalan otomatis.',
+            'type' => 'warning',
+            'data' => [
+                'booking_id' => 'BK002',
+                'payment_method' => 'Bank Transfer',
+                'amount' => 800000,
+                'due_date' => '2025-06-30 23:59:59'
+            ],
+            'read' => false,
+            'created_at' => date('Y-m-d H:i:s', strtotime('-1 day'))
+        ],
+        [
+            'id' => uniqid(),
+            'title' => 'Promo Spesial',
+            'message' => 'Dapatkan diskon 25% untuk booking weekend! Gunakan kode WEEKEND25 untuk mendapatkan potongan harga.',
+            'type' => 'info',
+            'data' => [
+                'promo_code' => 'WEEKEND25',
+                'discount' => '25%',
+                'valid_until' => '2025-07-15'
+            ],
+            'read' => true,
+            'created_at' => date('Y-m-d H:i:s', strtotime('-3 days'))
+        ],
+        [
+            'id' => uniqid(),
+            'title' => 'Check-in Reminder',
+            'message' => 'Pengingat: Check-in Anda untuk kamar Standard dijadwalkan besok pukul 14:00. Jangan lupa membawa kartu identitas.',
+            'type' => 'info',
+            'data' => [
+                'booking_id' => 'BK003',
+                'room_type' => 'Standard',
+                'check_in_time' => '14:00',
+                'check_in_date' => '2025-06-30'
+            ],
+            'read' => false,
+            'created_at' => date('Y-m-d H:i:s', strtotime('-6 hours'))
+        ]
+    ];
+    
+    // Set sample notifications to session for testing
+    session()->set('notifications', $sampleNotifications);
+    $notifications = $sampleNotifications;
+}
 ?>

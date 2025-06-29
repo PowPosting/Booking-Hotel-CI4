@@ -1,0 +1,33 @@
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test Notifications&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Test Notifications&lt;/h1&gt;
+    &lt;button onclick="testNotifications()"&gt;Test Get Notifications&lt;/button&gt;
+    &lt;div id="result"&gt;&lt;/div&gt;
+    
+    &lt;script&gt;
+    function testNotifications() {
+        console.log('Testing notifications...');
+        fetch('/booking/getNotifications')
+        .then(response =&gt; {
+            console.log('Response status:', response.status);
+            return response.json();
+        })
+        .then(data =&gt; {
+            console.log('Response data:', data);
+            document.getElementById('result').innerHTML = '&lt;pre&gt;' + JSON.stringify(data, null, 2) + '&lt;/pre&gt;';
+        })
+        .catch(error =&gt; {
+            console.error('Error:', error);
+            document.getElementById('result').innerHTML = '&lt;p style="color: red;"&gt;Error: ' + error.message + '&lt;/p&gt;';
+        });
+    }
+    
+    // Auto test on page load
+    testNotifications();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

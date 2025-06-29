@@ -11,7 +11,8 @@
 
     <?= $this->include('partials/footer') ?>
     <?= $this->include('partials/modals/room_detail_modal') ?>
+    <?= $this->include('partials/modals/choose_room_modal') ?>
+    <?= $this->include('partials/modals/checkout') ?>
     <?= $this->include('partials/scripts') ?>
-    <script src="<?= base_url('js/notifications.js') ?>"></script>
 </body>
 </html>

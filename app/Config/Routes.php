@@ -29,11 +29,20 @@ $routes->group('cart', function($routes) {
    // $routes->post('check-availability', 'Cart::checkAvailability');
 });
 
+// ===== NOTIFICATIONS =====
+$routes->group('notifications', function($routes) {
+    $routes->get('/', 'Notifications::index');
+    $routes->post('mark-read', 'Notifications::markRead');
+    $routes->post('delete', 'Notifications::delete');
+    $routes->post('mark-all-read', 'Notifications::markAllRead');
+    $routes->post('clear-all', 'Notifications::clearAll');
+});
+
 // ===== BOOKING =====
 $routes->group('booking', function($routes) {
     $routes->post('process', 'Booking::process');
     $routes->get('/', 'Booking::index');
-    $routes->get('notifications', 'Booking::getNotifications');
+    $routes->get('getNotifications', 'Booking::notifications');
     $routes->get('payment/(:num)', 'Booking::payment/$1');
 });
 
@@ -53,15 +62,47 @@ $routes->group('admin', function($routes) {
     $routes->get('bookings', 'Admin::bookings'); // **TAMBAH method untuk handle GET**
     $routes->post('bookings/update-status/(:num)', 'Admin::updateBookingStatus/$1');
     $routes->post('bookings/update-payment/(:num)', 'Admin::updatePaymentStatus/$1');
+    $routes->get('bookings/delete/(:num)', 'Admin::deleteBooking/$1');
     
     // Room management
     $routes->get('rooms', 'Admin::rooms'); // **TAMBAH method untuk handle GET**
     $routes->post('rooms/update-status', 'Admin::updateRoomStatus');
     $routes->get('rooms/create', 'Admin::createRoom'); // **TAMBAH jika diperlukan**
-    $routes->delete('rooms/delete/(:num)', 'Admin::deleteRoom/$1'); // **TAMBAH jika diperlukan**
+    $routes->post('rooms/create', 'Admin::createRoom'); // **TAMBAH untuk POST create**
+    $routes->get('rooms/delete/(:num)', 'Admin::deleteRoom/$1'); // **TAMBAH jika diperlukan**
     
     // User management
     $routes->get('users', 'Admin::users'); // **TAMBAH method untuk handle GET**
+    $routes->get('users/delete/(:num)', 'Admin::deleteUser/$1');
+    
+    // **TAMBAH: AJAX API endpoints**
+    $routes->get('api/stats', 'Admin::getStats');
+    $routes->get('api/recent-bookings', 'Admin::getRecentBookings');
+    $routes->get('api/system-info', 'Admin::getSystemInfo');
+    $routes->get('api/notifications', 'Admin::getNotifications');
+    $routes->get('api/export/(:alpha)', 'Admin::exportData/$1');
+    
+    // **TAMBAH: AJAX CRUD endpoints**
+    // Booking CRUD
+    $routes->get('api/bookings', 'Admin::getBookings');
+    $routes->post('api/bookings/update/(:num)', 'Admin::updateBookingAjax/$1');
+    $routes->post('api/bookings/update', 'Admin::updateBookingAjax');
+    $routes->delete('api/bookings/delete/(:num)', 'Admin::deleteBookingAjax/$1');
+    $routes->post('api/bookings/delete', 'Admin::deleteBookingAjax');
+    
+    // Room CRUD
+    $routes->get('api/rooms', 'Admin::getRooms');
+    $routes->post('api/rooms/save/(:num)', 'Admin::saveRoomAjax/$1');
+    $routes->post('api/rooms/save', 'Admin::saveRoomAjax');
+    $routes->delete('api/rooms/delete/(:num)', 'Admin::deleteRoomAjax/$1');
+    $routes->post('api/rooms/delete', 'Admin::deleteRoomAjax');
+    
+    // User CRUD
+    $routes->get('api/users', 'Admin::getUsers');
+    $routes->post('api/users/save/(:num)', 'Admin::saveUserAjax/$1');
+    $routes->post('api/users/save', 'Admin::saveUserAjax');
+    $routes->delete('api/users/delete/(:num)', 'Admin::deleteUserAjax/$1');
+    $routes->post('api/users/delete', 'Admin::deleteUserAjax');
 });
 
 

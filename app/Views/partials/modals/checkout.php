@@ -272,18 +272,50 @@ function displayOrderSummary(items) {
     let html = '';
     items.forEach(item => {
         html += `
-            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-                <div>
-                    <div class="fw-bold">${item.room_name}</div>
-                    <small class="text-muted">
-                        ${new Date(item.check_in).toLocaleDateString('id-ID')} - 
-                        ${new Date(item.check_out).toLocaleDateString('id-ID')}
-                    </small>
-                    <small class="text-muted d-block">${item.nights} malam • ${item.guests} tamu</small>
-                </div>
-                <div class="text-end">
-                    <div class="fw-bold">Rp ${new Intl.NumberFormat('id-ID').format(item.total_price)}</div>
-                    <small class="text-muted">Rp ${new Intl.NumberFormat('id-ID').format(item.price)}/malam</small>
+            <div class="card mb-3 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1">
+                            <div class="fw-bold text-primary">${item.room_name}</div>
+                            <small class="text-muted">
+                                ${new Date(item.check_in).toLocaleDateString('id-ID')} - 
+                                ${new Date(item.check_out).toLocaleDateString('id-ID')}
+                            </small>
+                            <small class="text-muted d-block">${item.nights} malam • ${item.guests} tamu</small>
+                            
+                            <!-- Room Price Breakdown -->
+                            <div class="mt-2">
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Kamar (${item.nights} malam):</span>
+                                    <span>Rp ${new Intl.NumberFormat('id-ID').format(item.room_total || item.price * item.nights)}</span>
+                                </div>
+                                
+                                <!-- Facilities -->
+                                ${item.facilities && item.facilities.length > 0 ? `
+                                    <div class="mt-1">
+                                        <span class="text-muted">Fasilitas Tambahan:</span>
+                                        ${item.facilities.map(facility => `
+                                            <div class="d-flex justify-content-between ps-3">
+                                                <span class="text-muted small">• ${facility.display_name}</span>
+                                                <span class="small">Rp ${new Intl.NumberFormat('id-ID').format(facility.price)}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                                
+                                ${item.special_requests ? `
+                                    <div class="mt-1">
+                                        <span class="text-muted small">Permintaan Khusus:</span>
+                                        <div class="text-muted small ps-3">${item.special_requests}</div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <div class="fw-bold text-primary fs-6">Rp ${new Intl.NumberFormat('id-ID').format(item.total_price)}</div>
+                            <small class="text-muted">Total</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
@@ -396,8 +428,12 @@ function showSuccessModal(data) {
     
     // **SIMPLE: Update notifikasi setelah 2 detik**
     setTimeout(() => {
+        console.log('Attempting to update notifications after checkout...');
         if (window.updateNotifications) {
+            console.log('Calling updateNotifications function...');
             window.updateNotifications();
+        } else {
+            console.error('updateNotifications function not found!');
         }
     }, 2000);
     
@@ -444,23 +480,10 @@ function goToMyBookings() {
     location.href = '<?= site_url('booking') ?>';
 }
 
-// Show alert function
-function showAlert(type, message) {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
-    alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
-    alertDiv.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i>
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    document.body.appendChild(alertDiv);
-    
-    setTimeout(() => {
-        if (alertDiv.parentNode) {
-            alertDiv.remove();
-        }
-    }, 3000);
-}
+// Make functions global so they can be called from HTML
+window.showCheckoutModal = showCheckoutModal;
+window.copyVANumber = copyVANumber;
+window.closeSuccessModal = closeSuccessModal;
+window.goToMyBookings = goToMyBookings;
+
 </script>

@@ -158,6 +158,7 @@
 <?= $this->include('partials/modals/room_detail_modal') ?>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
 function addToCartQuick(roomName, price, image) {
     <?php if (!session()->get('logged_in')): ?>
         showAlert('error', 'Silakan login terlebih dahulu untuk melakukan booking!');
@@ -183,24 +184,10 @@ function showRoomDetail(roomName, mainImage, image2, image3, description, price)
     modal.show();
 }
 
-function showAlert(type, message) {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
-    alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
-    alertDiv.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i>
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    document.body.appendChild(alertDiv);
-    
-    setTimeout(() => {
-        if (alertDiv.parentNode) {
-            alertDiv.remove();
-        }
-    }, 3000);
-}
+// Make functions global so they can be called from HTML onclick
+window.addToCartQuick = addToCartQuick;
+window.showRoomDetail = showRoomDetail;
+});
 </script>
 
 <style>

@@ -1,11 +1,18 @@
 <?php
 ?>
+<!-- Common JavaScript -->
+<script src="<?= base_url('assets/js/common.js') ?>"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.getElementById('loginButton').addEventListener('click', function() {
-        window.location.href = '<?= site_url('login') ?>';
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    // Login button click handler - only if element exists
+    const loginButton = document.getElementById('loginButton');
+    if (loginButton) {
+        loginButton.addEventListener('click', function() {
+            window.location.href = '<?= site_url('login') ?>';
+        });
+    }
 
     function showRoomDetail(title, img1, img2, img3, desc, price) {
         document.getElementById('modalRoomTitle').textContent = title;
@@ -52,4 +59,9 @@
         var modal = new bootstrap.Modal(document.getElementById('chooseRoomModal'));
         modal.show();
     }
+    
+    // Make functions global so they can be called from HTML
+    window.showRoomDetail = showRoomDetail;
+    window.showChooseRoomModal = showChooseRoomModal;
+});
 </script>

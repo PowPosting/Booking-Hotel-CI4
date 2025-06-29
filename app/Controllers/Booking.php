@@ -18,7 +18,7 @@ class Booking extends BaseController
         $this->bookingModel = new BookingModel();
         $this->roomModel = new RoomModel();
         $this->userModel = new UserModel();
-        helper(['url', 'form']);
+        helper(['url', 'form', 'notification']);
     }
 
     /**
@@ -143,6 +143,14 @@ class Booking extends BaseController
                 ]);
             }
 
+            // Create notification for successful booking
+            try {
+                $this->createBookingNotification($userId, $lastBookingCode, $lastTotalAmount, $paymentMethod);
+            } catch (\Exception $e) {
+                log_message('error', 'Failed to create notification: ' . $e->getMessage());
+                // Don't fail the booking process if notification creation fails
+            }
+
             // Clear cart
             session()->remove('cart_items');
 
@@ -214,7 +222,7 @@ class Booking extends BaseController
     /**
      * Get notifications for current user
      */
-    public function getNotifications()
+    public function notifications()
     {
         if (!session()->get('logged_in')) {
             return $this->response->setJSON([
@@ -226,28 +234,68 @@ class Booking extends BaseController
 
         $userId = session()->get('user_id');
         
+        log_message('info', "DEBUG - notifications() method called, user_id: {$userId}");
+        
         try {
+            // Get session-based notifications (most recent)
+            $sessionNotifications = session()->get('user_notifications') ?? [];
+            
+            log_message('info', "DEBUG - User ID: {$userId}");
+            log_message('info', "DEBUG - Session notifications count: " . count($sessionNotifications));
+            log_message('info', "DEBUG - Session notifications data: " . json_encode($sessionNotifications));
+            
             // Get recent bookings
             $bookings = $this->bookingModel->where('user_id', $userId)->orderBy('created_at', 'DESC')->limit(5)->findAll();
 
             $notifications = [];
-            foreach ($bookings as $booking) {
-                // **TAMBAH: Generate status dan message berdasarkan booking & payment status**
-                $statusInfo = $this->getBookingStatusInfo($booking['booking_status'], $booking['payment_status']);
-                
+            
+            // Add session notifications first (most recent)
+            foreach ($sessionNotifications as $notif) {
                 $notifications[] = [
-                    'id' => $booking['id'],
-                    'title' => 'Booking ' . $booking['booking_code'],
-                    'booking_status' => $booking['booking_status'], 
-                    'payment_status' => $booking['payment_status'], 
-                    'status_text' => $statusInfo['status_text'], 
-                    'status_color' => $statusInfo['status_color'], 
-                    'status_icon' => $statusInfo['status_icon'], 
-                    'message' => $statusInfo['message'] . ' - Rp ' . number_format($booking['total_amount'], 0, ',', '.'),
-                    'time' => $this->timeAgo($booking['created_at']), 
-                    'url' => base_url('booking/detail/' . $booking['id'])
+                    'id' => $notif['id'],
+                    'title' => $notif['title'],
+                    'booking_status' => 'pending',
+                    'payment_status' => 'pending', 
+                    'status_text' => 'Booking Berhasil', 
+                    'status_color' => 'success', 
+                    'status_icon' => 'check-circle', 
+                    'message' => $notif['message'],
+                    'time' => isset($notif['created_at']) ? time_elapsed_string($notif['created_at']) : 'Just now', 
+                    'url' => base_url('booking')
                 ];
             }
+            
+            // Add booking notifications
+            foreach ($bookings as $booking) {
+                // Skip if we already have a session notification for this booking
+                $hasSessionNotif = false;
+                foreach ($sessionNotifications as $sessNotif) {
+                    if (isset($sessNotif['booking_code']) && $sessNotif['booking_code'] === $booking['booking_code']) {
+                        $hasSessionNotif = true;
+                        break;
+                    }
+                }
+                
+                if (!$hasSessionNotif) {
+                    // **TAMBAH: Generate status dan message berdasarkan booking & payment status**
+                    $statusInfo = $this->getBookingStatusInfo($booking['booking_status'], $booking['payment_status']);
+                    
+                    $notifications[] = [
+                        'id' => 'booking_' . $booking['id'],
+                        'title' => 'Booking ' . $booking['booking_code'],
+                        'booking_status' => $booking['booking_status'], 
+                        'payment_status' => $booking['payment_status'], 
+                        'status_text' => $statusInfo['status_text'], 
+                        'status_color' => $statusInfo['status_color'], 
+                        'status_icon' => $statusInfo['status_icon'], 
+                        'message' => $statusInfo['message'] . ' - Rp ' . number_format($booking['total_amount'], 0, ',', '.'),
+                        'time' => isset($booking['created_at']) ? time_elapsed_string($booking['created_at']) : 'Unknown time', 
+                        'url' => base_url('booking/detail/' . $booking['id'])
+                    ];
+                }
+            }
+
+            log_message('info', "DEBUG - About to return success response with " . count($notifications) . " notifications");
 
             return $this->response->setJSON([
                 'success' => true,
@@ -257,9 +305,11 @@ class Booking extends BaseController
             
         } catch (\Exception $e) {
             log_message('error', 'Notification error: ' . $e->getMessage());
+            log_message('error', 'Notification error trace: ' . $e->getTraceAsString());
             return $this->response->setJSON([
                 'success' => false,
                 'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
                 'notifications' => [],
                 'count' => 0
             ]);
@@ -427,5 +477,59 @@ class Booking extends BaseController
         } else {
             return date('d/m/Y', strtotime($datetime));
         }
+    }
+
+    /**
+     * Create notification for successful booking
+     */
+    private function createBookingNotification($userId, $bookingCode, $totalAmount, $paymentMethod)
+    {
+        $db = \Config\Database::connect();
+        
+        // Prepare notification message based on payment method
+        $message = '';
+        $type = 'booking_success';
+        
+        switch ($paymentMethod) {
+            case 'cod':
+                $message = "Booking {$bookingCode} berhasil dibuat! Total: Rp " . number_format($totalAmount, 0, ',', '.') . ". Silakan bayar saat check-in.";
+                break;
+            case 'bank_va':
+                $message = "Booking {$bookingCode} berhasil dibuat! Total: Rp " . number_format($totalAmount, 0, ',', '.') . ". Silakan lakukan pembayaran melalui Virtual Account.";
+                break;
+            case 'qris':
+                $message = "Booking {$bookingCode} berhasil dibuat! Total: Rp " . number_format($totalAmount, 0, ',', '.') . ". Silakan scan QR Code untuk pembayaran.";
+                break;
+            default:
+                $message = "Booking {$bookingCode} berhasil dibuat! Total: Rp " . number_format($totalAmount, 0, ',', '.');
+                break;
+        }
+
+        // Insert notification into database (if you have notifications table)
+        // For now, we'll use session-based notifications
+        $notifications = session()->get('user_notifications') ?? [];
+        
+        $notification = [
+            'id' => uniqid(),
+            'user_id' => $userId,
+            'type' => $type,
+            'title' => 'Booking Berhasil',
+            'message' => $message,
+            'booking_code' => $bookingCode,
+            'total_amount' => $totalAmount,
+            'payment_method' => $paymentMethod,
+            'created_at' => date('Y-m-d H:i:s'),
+            'is_read' => false
+        ];
+        
+        // Add to beginning of notifications array
+        array_unshift($notifications, $notification);
+        
+        // Keep only last 50 notifications
+        $notifications = array_slice($notifications, 0, 50);
+        
+        session()->set('user_notifications', $notifications);
+        
+        log_message('info', "Notification created for user {$userId}: {$message}");
     }
 }
